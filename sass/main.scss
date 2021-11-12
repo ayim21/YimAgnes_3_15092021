@@ -1,0 +1,333 @@
+@import "./utils/variables";
+@import "./components/animation";
+@import "./components/menu";
+
+html{
+    font-size: 62.5%;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+img{
+    max-width: 100%;
+}
+
+body{
+    font-family: 'Roboto', sans-serif, Arial, Helvetica, sans-serif;
+    color: $color-txt;
+    font-size: 1.7rem;
+}
+
+.container{
+    max-width: 767px;
+    margin: 0 auto;
+}
+
+h1, h2{
+    margin: 0;
+    font-size: 3rem;
+}
+
+h3{
+    margin: 0;
+}
+
+p{
+    color: $color-txt-light;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+a{
+    text-decoration: none;
+    color: $color-txt;
+}
+
+button{
+    color: $color-txt-white;
+    background: $color-btn;
+    border: none;
+    border-radius: 3rem;
+    padding: 2rem;
+    margin: 1rem 0;
+    @include box-shadow;
+    cursor: pointer;
+    &:hover{
+        @include box-shadow-hover;
+        opacity: 0.9;
+    }
+}
+
+
+
+header{
+    text-align: center;
+    position: relative;
+    & a{
+        display: flex;
+        align-items: center;
+        & img{
+            width: 45%;
+            margin: 2.5rem auto;
+        }
+        & i{
+            font-size: 2.5rem;
+            position: absolute;
+            left: 5rem;
+        }
+    }
+}
+
+.location{
+    text-align: center;
+    &_display{
+        background-color: darken($color-bg-light, 5);
+        padding: 2rem;
+        font-size: 2rem;
+        color: $color-txt-light;
+        box-shadow: 0 -0.3rem 0.2rem $color-shadow;
+        & i{
+            margin-right: 2rem;
+            color: $color-txt-light;
+        }
+    }
+    &_explore{
+        background-color: $color-bg-light;
+        padding: 3.5rem 1rem;
+        & h1{
+            padding: 0 4.5rem;
+        }
+        & p{
+            white-space: normal;
+        }
+        & button{
+            margin: 1rem 0;
+        }
+    }
+}
+
+.step{
+    padding: 5rem 2rem;
+    & h2{
+        margin-bottom: 4rem;
+    }
+    &_content{
+        display: flex;
+        align-items: center;
+        flex: 1;
+        border-radius: 2rem;
+        background-color: $color-bg-light;
+        position: relative;
+        padding: .5rem 0;
+        margin-left: 1rem;
+        @include box-shadow;
+        &:hover{
+            background-color: lighten($color-primary,35);
+            & i{
+                color: $color-primary;
+            }
+        }
+        & span{
+            background-color: $color-primary;
+            border-radius: 5rem;
+            color: $color-txt-white;
+            padding: .35rem .8rem;
+            position: absolute;
+            left: -1rem;
+        }
+        & i{
+            margin: 0 2.5rem 0 4rem;
+            color: $color-txt-light;
+        }
+        & p{
+            font-weight: bold;
+            color: $color-txt;
+        }
+    }
+    &_content:nth-of-type(2){
+        margin: 2.5rem 0 2.5rem 1rem;
+    }
+}
+
+.restaurant{
+    padding: 5rem 2rem;
+    background-color: $color-bg-light;
+    &_card{
+        position: relative;
+        background-color: $color-bg-white;
+        border-radius: 2rem;
+        margin: 3rem 0;
+        @include box-shadow;
+        &_new{
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background-color: $color-tertiary;
+            color: darken($color-tertiary, 50);
+            padding: 1rem;
+            border-radius: .5rem;
+        }
+        &_img img{
+            object-fit: cover;
+            height: 20rem;
+            width: 100%;
+            border-radius: 2rem 2rem 0 0;
+        }
+        &_body{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2.5rem;
+            &-left{
+                & p{
+                    margin: 0.5rem 0;
+                }
+            }
+        }
+    }
+}
+
+footer{
+    background-color: $color-txt-light;
+    padding: 3rem 2rem;
+    & p{
+        color: $color-txt-white;
+        @include typo-logo;
+        font-size: 3rem;
+        margin: 0 2rem;
+    }
+    & img{
+        background: $color-bg-white;
+    }
+    & ul{
+        padding: 0 2rem;
+        & li{
+            list-style: none;
+            margin-bottom: 1rem;
+            & a{
+                color: $color-txt-white;
+                &:hover{
+                    color: $color-primary;
+                    & i{
+                        color: $color-primary;
+                    }
+                }
+            }
+            & i{
+                color: $color-txt-white;
+                margin-right: 1rem;
+            }
+        }
+    }
+}
+
+/*PAGE MENU*/
+
+.form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: $color-bg-light;
+    margin-top: -5rem;
+    padding: 0 2rem;
+    border-radius: 5rem 5rem 0 0;
+    &_title{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5rem 1.5rem;
+        & h1{
+            @include typo-logo;
+        }
+        & i{
+            font-size: 3rem;
+        }
+    }
+    &_order{
+        border: none;
+        margin: 0 0 5rem 0;
+        & legend{
+            text-transform: uppercase;
+            font-size: 2.5rem;
+            color: $color-txt-light;
+        }
+        &_option{
+            background-color: $color-bg-white;
+            border-radius: 2rem;
+            @include box-shadow;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            & label{
+                display: block;
+                width: 100%;
+                & span{
+                    display: block;
+                    width: 100%;
+                }
+                & p.dish{
+                    width: 63%;
+                    font-weight: bold;
+                    font-size: 2rem;
+                    margin: 2rem 1.5rem 1rem 1.5rem;
+                }
+                & p.side_dish{
+                    width: 63%;
+                    margin: 0 1.5rem 2rem 1.5rem;
+                }
+            }
+        }
+    }
+    & button{
+        padding: 2rem 6rem;
+        margin: 0 auto 5rem auto;
+    }
+}
+
+@media only screen and (min-width: 992px){
+    .container{
+        max-width: 1200px;
+    }
+
+    .step{
+        display: flex;
+        flex-wrap: wrap;
+        & h2{
+            flex-basis: 100%;
+            text-align: center;
+        }
+        &_content{
+            height: 10rem;
+            width: 35rem;
+            margin: 0 auto;
+            &:nth-of-type(2){
+                margin: 0 2.5rem;
+            }
+            & i{
+                margin: 0 2.5rem 0 5rem;
+            }
+            & p{
+                margin-right: 2rem;
+            } 
+        }
+    }
+
+    .restaurant{
+        display: flex;
+        flex-wrap: wrap;
+        & h2{
+            flex-basis: 100%;
+            padding: 0 0 2rem 7rem;
+        }
+        &_card{
+            width: 40%;
+            margin: 2rem auto;
+            & img{
+                height: 30rem;
+            }
+        }
+    }
+}

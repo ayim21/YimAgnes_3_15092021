@@ -1,0 +1,649 @@
+@charset "UTF-8";
+/*PRIX MENU*/
+@keyframes moving-logo {
+  0% {
+    transform: translateY(10rem);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(1.5);
+  }
+  90% {
+    transform: translateY(10rem);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+.spinner {
+  width: 100%;
+  position: relative;
+}
+.spinner img {
+  animation: moving-logo 3000ms;
+  opacity: 0;
+  position: absolute;
+  top: 45rem;
+  right: 7rem;
+}
+
+@keyframes sliding-page {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.loading {
+  animation: sliding-page 3500ms backwards;
+}
+
+/*ACCUEIL ICONE COEUR*/
+@keyframes heart-opacity {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.1;
+  }
+  40% {
+    opacity: 0.3;
+  }
+  60% {
+    opacity: 0.5;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.75;
+  }
+  95% {
+    opacity: 0.8;
+  }
+  98% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.like_heart {
+  height: 3rem;
+  width: 3rem;
+  position: relative;
+}
+.like_heart:hover > i.far.fa-heart {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+.like_heart:hover > i.fas.fa-heart {
+  opacity: 1;
+  animation: heart-opacity 500ms cubic-bezier(0.04, 0.39, 1, 0.67) both;
+}
+.like_heart i.far.fa-heart {
+  font-size: 3rem;
+  position: absolute;
+  right: 2.5rem;
+  top: 0;
+  color: #3b3b3b;
+}
+.like_heart i.fas.fa-heart {
+  font-size: 3rem;
+  position: absolute;
+  right: 2.5rem;
+  top: 0;
+  color: #99e2d0;
+  opacity: 0;
+}
+
+/*MENU ANIMATION*/
+@keyframes menu {
+  0% {
+    transform: translateX(-200rem);
+  }
+  100% {
+    transform: translateX(0rem);
+  }
+}
+.menu_sliding--1 {
+  animation: menu 450ms 150ms cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+.menu_sliding--2 {
+  animation: menu 450ms 300ms cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+.menu_sliding--3 {
+  animation: menu 450ms 450ms cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+
+/*MENU AJOUT PLAT*/
+/* <input> */
+[type=checkbox]:not(:checked),
+[type=checkbox]:checked {
+  position: absolute;
+  left: -99rem;
+  top: 0;
+}
+
+/* <input> + <label> */
+[type=checkbox]:not(:checked) + label,
+[type=checkbox]:checked + label {
+  position: relative;
+  cursor: pointer;
+}
+
+/* <input> + <label::after> ICON CHECK*/
+[type=checkbox]:not(:checked) + label::after,
+[type=checkbox]:checked + label::after {
+  content: "\f058";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  bottom: 3rem;
+  right: 1.5rem;
+  margin: 0 1.5rem;
+  font-size: 3rem;
+  color: #fff;
+  transition: all 0.25s ease-in-out;
+  /* Petite transition */
+}
+
+/* Animation - cochée - PRIX*/
+[type=checkbox]:checked + label::before {
+  opacity: 1;
+  transform: translateX(-9rem);
+}
+
+/* Animation - Non cochée - ICON CHECK */
+[type=checkbox]:not(:checked) + label::after {
+  opacity: 0;
+  transform: translateX(5rem);
+}
+
+/* Animation - Cochée ICON CHECK*/
+[type=checkbox]:checked + label::after {
+  opacity: 1;
+  transform: translateX(0) rotate(2turn);
+}
+
+/* <input> + <label span> */
+[type=checkbox]:not(:checked) + label .animation,
+[type=checkbox]:checked + label .animation {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* <input> + <label span::after> BACKGROUND */
+[type=checkbox]:not(:checked) + label .animation::after,
+[type=checkbox]:checked + label .animation::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 9rem;
+  height: 9.3rem;
+  background-color: #99e2d0;
+  border-radius: 0 2rem 2rem 0;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Animation - No cochée - BACKGROUND*/
+[type=checkbox]:not(:checked) + label .animation::after {
+  opacity: 0;
+  transform: translateX(15rem);
+}
+
+/* Animation - Cochée - BACKGROUND*/
+[type=checkbox]:checked + label .animation::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Animation - Cochée - BACKGROUND*/
+[type=checkbox]:checked + label p.side_dish {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* PERSONNALISE PRIX */
+/* <input> + <label::before> PRIX */
+[type=checkbox]:not(:checked) + .price-one::before,
+[type=checkbox]:checked + .price-one::before {
+  content: "25€";
+  font-weight: bold;
+  position: absolute;
+  right: 2.5rem;
+  bottom: 2rem;
+  transition: all 0.275s ease-in-out;
+}
+
+[type=checkbox]:not(:checked) + .price-two::before,
+[type=checkbox]:checked + .price-two::before {
+  content: "35€";
+  font-weight: bold;
+  position: absolute;
+  right: 2.5rem;
+  bottom: 2rem;
+  transition: all 0.275s ease-in-out;
+}
+
+[type=checkbox]:not(:checked) + .price-three::before,
+[type=checkbox]:checked + .price-three::before {
+  content: "20€";
+  font-weight: bold;
+  position: absolute;
+  right: 2.5rem;
+  bottom: 2rem;
+  transition: all 0.275s ease-in-out;
+}
+
+[type=checkbox]:not(:checked) + .price-four::before,
+[type=checkbox]:checked + .price-four::before {
+  content: "40€";
+  font-weight: bold;
+  position: absolute;
+  right: 2.5rem;
+  bottom: 2rem;
+  transition: all 0.275s ease-in-out;
+}
+
+[type=checkbox]:not(:checked) + .price-five::before,
+[type=checkbox]:checked + .price-five::before {
+  content: "44€";
+  font-weight: bold;
+  position: absolute;
+  right: 2.5rem;
+  bottom: 2rem;
+  transition: all 0.275s ease-in-out;
+}
+
+[type=checkbox]:not(:checked) + .price-six::before,
+[type=checkbox]:checked + .price-six::before {
+  content: "18€";
+  font-weight: bold;
+  position: absolute;
+  right: 2.5rem;
+  bottom: 2rem;
+  transition: all 0.275s ease-in-out;
+}
+
+[type=checkbox]:not(:checked) + .price-seven::before,
+[type=checkbox]:checked + .price-seven::before {
+  content: "22€";
+  font-weight: bold;
+  position: absolute;
+  right: 2.5rem;
+  bottom: 2rem;
+  transition: all 0.275s ease-in-out;
+}
+
+[type=checkbox]:not(:checked) + .price-eight::before,
+[type=checkbox]:checked + .price-eight::before {
+  content: "23€";
+  font-weight: bold;
+  position: absolute;
+  right: 2.5rem;
+  bottom: 2rem;
+  transition: all 0.275s ease-in-out;
+}
+
+/*BACKGROUND*/
+.bg_delice-des-sens {
+  background: url("../img/restaurants/le-delice-des-sens.jpg") no-repeat center center;
+  background-size: cover;
+  height: 35rem;
+}
+
+.bg_a-la-francaise {
+  background: url("../img/restaurants/a-la-francaise.jpg") no-repeat center center;
+  background-size: cover;
+  height: 35rem;
+}
+
+.bg_la-note-enchantee {
+  background: url("../img/restaurants/la-note-enchantee.jpg") no-repeat center center;
+  background-size: cover;
+  height: 35rem;
+}
+
+.bg_la-palette-du-gout {
+  background: url("../img/restaurants/la-palette-du-gout.jpg") no-repeat center center;
+  background-size: cover;
+  height: 35rem;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  font-family: "Roboto", sans-serif, Arial, Helvetica, sans-serif;
+  color: #000;
+  font-size: 1.7rem;
+}
+
+.container {
+  max-width: 767px;
+  margin: 0 auto;
+}
+
+h1, h2 {
+  margin: 0;
+  font-size: 3rem;
+}
+
+h3 {
+  margin: 0;
+}
+
+p {
+  color: #3b3b3b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+button {
+  color: #fff;
+  background: linear-gradient(160deg, #ff79da, #9356dc);
+  border: none;
+  border-radius: 3rem;
+  padding: 2rem;
+  margin: 1rem 0;
+  box-shadow: 0.5rem 0.5rem 0.7rem #d2d2d2;
+  cursor: pointer;
+}
+button:hover {
+  box-shadow: 0.8rem 0.8rem 1rem #d2d2d2;
+  opacity: 0.9;
+}
+
+header {
+  text-align: center;
+  position: relative;
+}
+header a {
+  display: flex;
+  align-items: center;
+}
+header a img {
+  width: 45%;
+  margin: 2.5rem auto;
+}
+header a i {
+  font-size: 2.5rem;
+  position: absolute;
+  left: 5rem;
+}
+
+.location {
+  text-align: center;
+}
+.location_display {
+  background-color: #e5e5e5;
+  padding: 2rem;
+  font-size: 2rem;
+  color: #3b3b3b;
+  box-shadow: 0 -0.3rem 0.2rem #d2d2d2;
+}
+.location_display i {
+  margin-right: 2rem;
+  color: #3b3b3b;
+}
+.location_explore {
+  background-color: #f2f2f2;
+  padding: 3.5rem 1rem;
+}
+.location_explore h1 {
+  padding: 0 4.5rem;
+}
+.location_explore p {
+  white-space: normal;
+}
+.location_explore button {
+  margin: 1rem 0;
+}
+
+.step {
+  padding: 5rem 2rem;
+}
+.step h2 {
+  margin-bottom: 4rem;
+}
+.step_content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  border-radius: 2rem;
+  background-color: #f2f2f2;
+  position: relative;
+  padding: 0.5rem 0;
+  margin-left: 1rem;
+  box-shadow: 0.5rem 0.5rem 0.7rem #d2d2d2;
+}
+.step_content:hover {
+  background-color: #f2eafb;
+}
+.step_content:hover i {
+  color: #9356dc;
+}
+.step_content span {
+  background-color: #9356dc;
+  border-radius: 5rem;
+  color: #fff;
+  padding: 0.35rem 0.8rem;
+  position: absolute;
+  left: -1rem;
+}
+.step_content i {
+  margin: 0 2.5rem 0 4rem;
+  color: #3b3b3b;
+}
+.step_content p {
+  font-weight: bold;
+  color: #000;
+}
+.step_content:nth-of-type(2) {
+  margin: 2.5rem 0 2.5rem 1rem;
+}
+
+.restaurant {
+  padding: 5rem 2rem;
+  background-color: #f2f2f2;
+}
+.restaurant_card {
+  position: relative;
+  background-color: #fff;
+  border-radius: 2rem;
+  margin: 3rem 0;
+  box-shadow: 0.5rem 0.5rem 0.7rem #d2d2d2;
+}
+.restaurant_card_new {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background-color: #99e2d0;
+  color: #1b6150;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+.restaurant_card_img img {
+  object-fit: cover;
+  height: 20rem;
+  width: 100%;
+  border-radius: 2rem 2rem 0 0;
+}
+.restaurant_card_body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2.5rem;
+}
+.restaurant_card_body-left p {
+  margin: 0.5rem 0;
+}
+
+footer {
+  background-color: #3b3b3b;
+  padding: 3rem 2rem;
+}
+footer p {
+  color: #fff;
+  font-family: "Shrikhand", cursive, Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 3rem;
+  margin: 0 2rem;
+}
+footer img {
+  background: #fff;
+}
+footer ul {
+  padding: 0 2rem;
+}
+footer ul li {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+footer ul li a {
+  color: #fff;
+}
+footer ul li a:hover {
+  color: #9356dc;
+}
+footer ul li a:hover i {
+  color: #9356dc;
+}
+footer ul li i {
+  color: #fff;
+  margin-right: 1rem;
+}
+
+/*PAGE MENU*/
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #f2f2f2;
+  margin-top: -5rem;
+  padding: 0 2rem;
+  border-radius: 5rem 5rem 0 0;
+}
+.form_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5rem 1.5rem;
+}
+.form_title h1 {
+  font-family: "Shrikhand", cursive, Arial, Helvetica, sans-serif;
+  font-weight: normal;
+}
+.form_title i {
+  font-size: 3rem;
+}
+.form_order {
+  border: none;
+  margin: 0 0 5rem 0;
+}
+.form_order legend {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  color: #3b3b3b;
+}
+.form_order_option {
+  background-color: #fff;
+  border-radius: 2rem;
+  box-shadow: 0.5rem 0.5rem 0.7rem #d2d2d2;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+.form_order_option label {
+  display: block;
+  width: 100%;
+}
+.form_order_option label span {
+  display: block;
+  width: 100%;
+}
+.form_order_option label p.dish {
+  width: 63%;
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 2rem 1.5rem 1rem 1.5rem;
+}
+.form_order_option label p.side_dish {
+  width: 63%;
+  margin: 0 1.5rem 2rem 1.5rem;
+}
+.form button {
+  padding: 2rem 6rem;
+  margin: 0 auto 5rem auto;
+}
+
+@media only screen and (min-width: 992px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  .step {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .step h2 {
+    flex-basis: 100%;
+    text-align: center;
+  }
+  .step_content {
+    height: 10rem;
+    width: 35rem;
+    margin: 0 auto;
+  }
+  .step_content:nth-of-type(2) {
+    margin: 0 2.5rem;
+  }
+  .step_content i {
+    margin: 0 2.5rem 0 5rem;
+  }
+  .step_content p {
+    margin-right: 2rem;
+  }
+
+  .restaurant {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .restaurant h2 {
+    flex-basis: 100%;
+    padding: 0 0 2rem 7rem;
+  }
+  .restaurant_card {
+    width: 40%;
+    margin: 2rem auto;
+  }
+  .restaurant_card img {
+    height: 30rem;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,254 @@
+@keyframes moving-logo{
+    0%{
+        transform: translateY(10rem);
+        opacity: 1;
+    }
+    40%{
+        transform: scale(1.5);
+    }
+    90%{
+        transform: translateY(10rem);
+        opacity: 1;
+    }
+    100%{transform: scale(3);
+        opacity: 0;
+    }
+}
+
+.spinner{
+    width: 100%;
+    position: relative;
+    & img{
+        animation: moving-logo 3000ms;
+        opacity: 0;
+        position: absolute;
+        top: 45rem;
+        right: 7rem;
+    }
+}
+
+@keyframes sliding-page{
+    0%{opacity: 0;}
+    80%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
+.loading{
+    animation: sliding-page 3500ms backwards;
+}
+
+
+/*ACCUEIL ICONE COEUR*/
+    @keyframes heart-opacity{
+        0%{opacity: 0;
+        }
+        20%{opacity: 0.1;
+        }
+        40%{opacity: 0.3;
+        }
+        60%{opacity: 0.5;
+        }
+        80%{opacity: 0.7;
+        }
+        90%{opacity: 0.75;
+        }
+        95%{opacity: 0.8;
+        }
+        98%{opacity: 0.9;
+        }
+        100%{opacity: 1;
+        }
+    }
+
+    @mixin heart-icon{
+        font-size: 3rem;
+        position: absolute;
+        right: 2.5rem;
+        top: 0;
+    }
+
+    .like_heart{
+        height: 3rem;
+        width: 3rem;
+        position: relative;
+        &:hover > i.far.fa-heart{
+            opacity: 0;
+            transition: opacity 300ms;
+        }
+        &:hover > i.fas.fa-heart{
+            opacity: 1;
+            animation: heart-opacity 500ms cubic-bezier(0.04, 0.39, 1, 0.67) both;
+        }
+        & i.far.fa-heart{
+            @include heart-icon;
+            color: $color-txt-light;
+
+        }
+        & i.fas.fa-heart{ 
+            @include heart-icon;
+            color: $color-tertiary;
+            opacity: 0;
+        }
+    }
+
+
+/*MENU ANIMATION*/
+
+    @keyframes menu{
+        0%{transform: translateX(-200rem);
+        }
+        100%{transform: translateX(0rem);
+        } 
+    }
+
+    @mixin menu_slide($dur, $delay){
+        animation: menu $dur $delay cubic-bezier(0.215, 0.610, 0.355, 1) both;
+    }
+
+    .menu_sliding{
+        &--1{
+            @include menu_slide(450ms, 150ms);
+        }
+        &--2{
+            @include menu_slide(450ms, 300ms);
+        }
+        &--3{
+            @include menu_slide(450ms, 450ms);
+        }
+    }
+
+
+    
+/*MENU AJOUT PLAT*/
+
+    /* <input> */
+    [type="checkbox"]:not(:checked), 
+    [type="checkbox"]:checked{
+        position: absolute;
+        left: -99rem;
+        top: 0;
+    }
+ 
+    /* <input> + <label> */
+    [type="checkbox"]:not(:checked) + label,
+    [type="checkbox"]:checked + label{
+        position: relative;
+        cursor: pointer;
+    }
+ 
+    /* <input> + <label::after> ICON CHECK*/
+    [type="checkbox"]:not(:checked) + label::after,
+    [type="checkbox"]:checked + label::after {
+        content: '\f058';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;  
+        position: absolute;
+        bottom: 3rem;
+        right: 1.5rem;
+        margin: 0 1.5rem;
+        font-size: 3rem;
+        color: $color-txt-white;
+        transition: all .25s ease-in-out; /* Petite transition */
+    }
+ 
+    /* Animation - cochée - PRIX*/
+    [type="checkbox"]:checked + label::before {
+        opacity: 1;
+        transform: translateX(-9rem);
+    }
+ 
+    /* Animation - Non cochée - ICON CHECK */
+    [type="checkbox"]:not(:checked) + label::after {
+        opacity: 0;
+        transform: translateX(5rem);
+    }
+ 
+    /* Animation - Cochée ICON CHECK*/
+    [type="checkbox"]:checked + label::after {
+        opacity: 1;
+        transform: translateX(0) rotate(2turn);
+    }
+ 
+ 
+    /* <input> + <label span> */
+    [type="checkbox"]:not(:checked) + label .animation,
+    [type="checkbox"]:checked + label .animation{
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+ 
+    /* <input> + <label span::after> BACKGROUND */
+    [type="checkbox"]:not(:checked) + label .animation::after,
+    [type="checkbox"]:checked + label .animation::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 9rem;
+        height: 9.3rem;
+        background-color:$color-tertiary;
+        border-radius: 0 2rem 2rem 0;
+        transition: all .2s ease-in-out;
+    }
+ 
+    /* Animation - No cochée - BACKGROUND*/
+    [type="checkbox"]:not(:checked) + label .animation::after {
+        opacity: 0;
+        transform: translateX(15rem);
+    }
+ 
+    /* Animation - Cochée - BACKGROUND*/
+    [type="checkbox"]:checked + label .animation::after {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Animation - Cochée - BACKGROUND*/
+    [type="checkbox"]:checked + label p.side_dish {
+        opacity: 1;
+        transform: translateX(0);
+    }    
+
+
+    /* PERSONNALISE PRIX */
+        /* <input> + <label::before> PRIX */
+        [type="checkbox"]:not(:checked) + .price-one::before,
+        [type="checkbox"]:checked + .price-one::before {
+            @include pricing;
+        }
+
+        [type="checkbox"]:not(:checked) + .price-two::before,
+        [type="checkbox"]:checked + .price-two::before {
+            @include pricing($price-two);
+        }
+
+        [type="checkbox"]:not(:checked) + .price-three::before,
+        [type="checkbox"]:checked + .price-three::before {
+            @include pricing($price-three);
+        }
+
+        [type="checkbox"]:not(:checked) + .price-four::before,
+        [type="checkbox"]:checked + .price-four::before {
+            @include pricing($price-four);
+        }
+
+        [type="checkbox"]:not(:checked) + .price-five::before,
+        [type="checkbox"]:checked + .price-five::before {
+            @include pricing($price-five);
+        }
+
+        [type="checkbox"]:not(:checked) + .price-six::before,
+        [type="checkbox"]:checked + .price-six::before {
+            @include pricing($price-six);
+        }
+
+        [type="checkbox"]:not(:checked) + .price-seven::before,
+        [type="checkbox"]:checked + .price-seven::before {
+            @include pricing($price-seven);
+        }
+
+        [type="checkbox"]:not(:checked) + .price-eight::before,
+        [type="checkbox"]:checked + .price-eight::before {
+            @include pricing($price-eight);
+        }
