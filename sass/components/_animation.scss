@@ -1,13 +1,17 @@
+
 @keyframes moving-logo{
     0%{
-        transform: translateY(10rem);
+        transform: scale(1);
         opacity: 1;
     }
+    5%{
+        transform: translateY(2.9rem);
+    }
     40%{
-        transform: scale(1.5);
+        transform: scaleX(1.5);
     }
     90%{
-        transform: translateY(10rem);
+        transform: translateY(5rem);
         opacity: 1;
     }
     100%{transform: scale(3);
@@ -19,11 +23,14 @@
     width: 100%;
     position: relative;
     & img{
-        animation: moving-logo 3000ms;
+        animation: moving-logo 3000ms forwards;
         opacity: 0;
         position: absolute;
-        top: 45rem;
-        right: 7rem;
+        top: 29rem;
+        right: 15%;
+        width: 70%;
+        margin: 0 auto;
+        z-index: -1;
     }
 }
 
@@ -42,15 +49,11 @@
     @keyframes heart-opacity{
         0%{opacity: 0;
         }
-        20%{opacity: 0.1;
+        60%{opacity: 0.3;
         }
-        40%{opacity: 0.3;
+        80%{opacity: 0.3;
         }
-        60%{opacity: 0.5;
-        }
-        80%{opacity: 0.7;
-        }
-        90%{opacity: 0.75;
+        90%{opacity: 0.5;
         }
         95%{opacity: 0.8;
         }
@@ -65,6 +68,7 @@
         position: absolute;
         right: 2.5rem;
         top: 0;
+        cursor: pointer;
     }
 
     .like_heart{
@@ -86,7 +90,9 @@
         }
         & i.fas.fa-heart{ 
             @include heart-icon;
-            color: $color-tertiary;
+            background: $color-btn;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             opacity: 0;
         }
     }
@@ -143,42 +149,27 @@
         font-family: 'Font Awesome 5 Free';
         font-weight: 900;  
         position: absolute;
-        bottom: 3rem;
+        bottom: 2rem;
         right: 1.5rem;
         margin: 0 1.5rem;
         font-size: 3rem;
         color: $color-txt-white;
-        transition: all .25s ease-in-out; /* Petite transition */
+        transition: all .25s ease-in-out;
     }
- 
-    /* Animation - cochée - PRIX*/
-    [type="checkbox"]:checked + label::before {
-        opacity: 1;
-        transform: translateX(-9rem);
-    }
- 
+
     /* Animation - Non cochée - ICON CHECK */
     [type="checkbox"]:not(:checked) + label::after {
         opacity: 0;
         transform: translateX(5rem);
     }
- 
+     
     /* Animation - Cochée ICON CHECK*/
     [type="checkbox"]:checked + label::after {
         opacity: 1;
         transform: translateX(0) rotate(2turn);
     }
  
- 
-    /* <input> + <label span> */
-    [type="checkbox"]:not(:checked) + label .animation,
-    [type="checkbox"]:checked + label .animation{
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
- 
-    /* <input> + <label span::after> BACKGROUND */
+    /* <input> + <label span::after> CHECK BACKGROUND */
     [type="checkbox"]:not(:checked) + label .animation::after,
     [type="checkbox"]:checked + label .animation::after {
         content: '';
@@ -186,31 +177,46 @@
         right: 0;
         top: 0;
         width: 9rem;
-        height: 9.3rem;
-        background-color:$color-tertiary;
+        height: 100%;
+        background-color: $color-tertiary;
         border-radius: 0 2rem 2rem 0;
         transition: all .2s ease-in-out;
     }
  
-    /* Animation - No cochée - BACKGROUND*/
+    /* Animation - Non cochée - CHECK BACKGROUND*/
     [type="checkbox"]:not(:checked) + label .animation::after {
         opacity: 0;
         transform: translateX(15rem);
     }
  
-    /* Animation - Cochée - BACKGROUND*/
+    /* Animation - Cochée - CHECK BACKGROUND*/
     [type="checkbox"]:checked + label .animation::after {
         opacity: 1;
         transform: translateX(0);
     }
 
-    /* Animation - Cochée - BACKGROUND*/
-    [type="checkbox"]:checked + label p.side_dish {
-        opacity: 1;
-        transform: translateX(0);
+    /* Animation - Cochée - DISH*/
+    [type="checkbox"]:checked + label span.dish {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 45%;
     }    
 
+    /* Animation - Cochée - SIDE DISH*/
+    [type="checkbox"]:checked + label span.side_dish {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 45%;
+    }
 
+    /* Animation - cochée - PRIX*/
+    [type="checkbox"]:checked + label::before {
+        opacity: 1;
+        transform: translateX(-9rem);
+    }
+    
     /* PERSONNALISE PRIX */
         /* <input> + <label::before> PRIX */
         [type="checkbox"]:not(:checked) + .price-one::before,
