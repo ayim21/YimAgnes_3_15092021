@@ -101,9 +101,16 @@
 /*MENU ANIMATION*/
 
     @keyframes menu{
-        0%{transform: translateX(-200rem);
+        0%{
+            transform: translateY(20rem);
+            opacity: 0;
         }
-        100%{transform: translateX(0rem);
+        70%, 90%{
+            opacity: 0.8;
+        }
+        100%{
+            transform: translateY(0rem);
+            opacity: 1;
         } 
     }
 
@@ -113,13 +120,13 @@
 
     .menu_sliding{
         &--1{
-            @include menu_slide(450ms, 150ms);
+            @include menu_slide(500ms, 150ms);
         }
         &--2{
-            @include menu_slide(450ms, 300ms);
+            @include menu_slide(500ms, 300ms);
         }
         &--3{
-            @include menu_slide(450ms, 450ms);
+            @include menu_slide(500ms, 450ms);
         }
     }
 
