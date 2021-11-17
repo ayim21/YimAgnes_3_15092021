@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
 @import "./utils/variables";
 @import "./components/animation";
 @import "./components/menu";
@@ -52,9 +54,9 @@ button{
     margin: 1rem 0;
     @include box-shadow;
     cursor: pointer;
+    transition-duration: 300ms;
     &:hover{
         @include box-shadow-hover;
-        opacity: 0.9;
     }
 }
 
@@ -69,11 +71,19 @@ header{
         & img{
             width: 45%;
             margin: 2.5rem auto;
+            transition-duration: 500ms;
+            &:hover{
+                transform: scale(1.2);
+            }
         }
         & i{
             font-size: 2.5rem;
             position: absolute;
             left: 5rem;
+            transition: transform 500ms;
+            &:hover{
+                transform: scale(1.2);
+            }
         }
     }
 }
@@ -121,8 +131,10 @@ header{
         padding: .5rem 0;
         margin-left: 1rem;
         @include box-shadow;
+        transition-duration: 300ms;
         &:hover{
             background-color: lighten($color-primary,32);
+            @include box-shadow-hover;
             & i{
                 color: $color-primary;
             }
@@ -158,6 +170,10 @@ header{
         border-radius: 2rem;
         margin: 3rem 0;
         @include box-shadow;
+        transition-duration: 300ms;
+        &:hover{
+            @include box-shadow-hover;
+        }
         &_new{
             position: absolute;
             top: 2rem;
@@ -165,7 +181,7 @@ header{
             background-color: $color-tertiary;
             color: darken($color-tertiary, 50);
             padding: 1rem;
-            border-radius: .5rem;
+            border-radius: 0.5rem;
         }
         &_img img{
             object-fit: cover;
@@ -195,6 +211,9 @@ footer{
         @include typo-logo;
         font-size: 3rem;
         margin: 0 2rem;
+        &:hover{
+            @include text-shadow-hover;
+        }
     }
     & img{
         background: $color-bg-white;
@@ -207,10 +226,7 @@ footer{
             & a{
                 color: $color-txt-white;
                 &:hover{
-                    color: $color-primary;
-                    & i{
-                        color: $color-primary;
-                    }
+                    @include text-shadow-hover;
                 }
             }
             & i{
@@ -267,6 +283,12 @@ footer{
             @include box-shadow;
             display: flex;
             margin-top: 2rem;
+            transition-duration: 300ms;
+            &:hover{
+                & span.side_dish{
+                    color: $color-tertiary;
+                }
+            }
             & label{
                 width: 100%;
                 display: flex;
@@ -290,7 +312,7 @@ footer{
     }
 }
 
-@media only screen and (min-width: 992px){
+@media only screen and (min-width: 768px){
     .container{
         max-width: 1200px;
     }
@@ -330,6 +352,30 @@ footer{
             margin: 2rem auto;
             & img{
                 height: 30rem;
+            }
+        }
+    }
+    .form{
+        &_title{
+            padding:5rem 3.5rem;
+        }
+        &_order{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            margin: 0 2.5rem 5rem 2.5rem;
+            &_option{
+                width: 95%;
+                height: 10rem;
+                align-items: center;
+                & label{
+                    height: 100%;
+                    display: flex;
+                    justify-content: flex-end;
+                    & span.side_dish{
+                        margin: 0 1.5rem 2.5rem 1.5rem;
+                    }
+                }
             }
         }
     }

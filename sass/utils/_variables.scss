@@ -11,7 +11,7 @@ $color-bg-white: #fff;
 
 $color-btn: linear-gradient(160deg, $color-secondary, $color-primary);
 
-$color-shadow: #d2d2d2;
+$color-shadow: #c2c2c2;
 
 @mixin typo-logo{
     font-family: 'Shrikhand', cursive, Arial, Helvetica, sans-serif;
@@ -23,9 +23,19 @@ $color-shadow: #d2d2d2;
 }
 
 @mixin box-shadow-hover{
-    box-shadow: .8rem .8rem 1rem $color-shadow;
+    box-shadow: .7rem .7rem 1rem $color-shadow;
+    opacity: 0.8;
 }
 
+@mixin text-shadow-hover{
+    text-shadow: 0.3rem 0.3rem 0.5rem $color-primary;
+}
+
+@mixin desktop-tablet{
+    @media only screen and (min-width: 768px){
+        @content;
+    }
+}
 
 /*PRIX MENU*/
     $price-one: '25€';
@@ -44,4 +54,8 @@ $color-shadow: #d2d2d2;
         right: 2.5rem;
         bottom: 1.5rem;
         transition: all .275s ease-in-out;
+        @include desktop-tablet{
+            bottom: 2.5rem;
+        }
     }
+

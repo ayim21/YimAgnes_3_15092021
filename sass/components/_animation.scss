@@ -51,9 +51,9 @@
         }
         60%{opacity: 0.3;
         }
-        80%{opacity: 0.3;
+        80%{opacity: 0.5;
         }
-        90%{opacity: 0.5;
+        90%{opacity: 0.75;
         }
         95%{opacity: 0.8;
         }
@@ -115,7 +115,7 @@
     }
 
     @mixin menu_slide($dur, $delay){
-        animation: menu $dur $delay cubic-bezier(0.215, 0.610, 0.355, 1) both;
+        animation: menu $dur $delay cubic-bezier(0.07, 0.54, 0, 0.85) both;
     }
 
     .menu_sliding{
@@ -162,6 +162,9 @@
         font-size: 3rem;
         color: $color-txt-white;
         transition: all .25s ease-in-out;
+        @include desktop-tablet{
+            bottom: 3.3rem;
+        }
     }
 
     /* Animation - Non cochée - ICON CHECK */
@@ -193,7 +196,7 @@
     /* Animation - Non cochée - CHECK BACKGROUND*/
     [type="checkbox"]:not(:checked) + label .animation::after {
         opacity: 0;
-        transform: translateX(15rem);
+        transform: translateX(5rem);
     }
  
     /* Animation - Cochée - CHECK BACKGROUND*/
@@ -265,3 +268,6 @@
         [type="checkbox"]:checked + .price-eight::before {
             @include pricing($price-eight);
         }
+
+
+        
